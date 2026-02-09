@@ -1,2 +1,3 @@
 # CSX-Orbit
-CSX orbit project shared repository between Jack and I
+CSX orbit simulation project using python
+
