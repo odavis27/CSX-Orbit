@@ -1,21 +1,25 @@
-from simulation_class import *
+#from simulation_class import *
 
-T = 30
-G = 6.67*10^-11
-M_host = 1.99*10^30
-X = 1.5*10^8
-Y = 0
-Vx = 0
-Vy = 5.81*10^5
-ax = -1*G*M_host*X/(X^2+Y^2)^1.5
-ay = -1*G*M_host*Y/(X^2+Y^2)^1.5
+G = 6.67*(10**-11)
 
-def calc_pos(T, M_host):
-    X = X+(Vx*T)
-    Y = Y+(Vy*T)
-    Vx = Vx+ax*T
-    Vy = Vy+ay*T
-    ax = -1*G*M_host*X/(X^2+Y^2)^1.5
-    ay = -1*G*M_host*Y/(X^2+Y^2)^1.5
-    return X, Y 
+class planet:
+    def __init__(self):
+        self.T = 1
+        self.M_host = 1.989e30
+        self.X = 1.496e11
+        self.Y = 0
+        self.Vx = 0
+        self.Vy = 581000
+        self.ax = -1*G*self.M_host*self.X/(self.X**2+self.Y**2)**1.5
+        self.ay = -1*G*self.M_host*self.Y/(self.X**2+self.Y**2)**1.5
+
+def calc_pos(T, p):
+    global G
+    X = p.X+(p.Vx*T)
+    Y = p.Y+(p.Vy*T)
+    p.ax = -1*G*p.M_host*X/(X**2+Y**2)**1.5
+    p.ay = -1*G*p.M_host*Y/(X**2+Y**2)**1.5
+    p.Vx = p.Vx+p.ax*T
+    p.Vy = p.Vy+p.ay*T
+    return (X, Y)
 
