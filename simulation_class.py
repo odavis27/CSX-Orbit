@@ -20,6 +20,7 @@ class simulation:
         # An attribute is a variable specific to a class
         self.balls = []
         self.trail_color = trail_color
+        #self.trail_line, = plt.plot([], [], color=self.trail_color, alpha=0.5)
     def clear_balls(self):
         self.balls.clear()
     def add_ball(self,x=0,y=0,col = None):
@@ -33,24 +34,14 @@ class simulation:
             Xs = [i.x for i in self.balls]
             Ys = [i.y for i in self.balls]
             plt.plot(Xs, Ys, color=self.trail_color)
+    def draw_last_trails(self):
+        plt.plot([i.x for i in self.balls][-2:], [i.y for i in self.balls][-2:], color=self.trail_color)
+        #self.trail.set_data(self.history_x, self.history_y)
+        #self.trail_line.set_data(self.history_x, self.history_y)
+        #self.history_x = self.history_x[-50:]
+        #self.history_y = self.history_y[-50:]
 
-
-#========================================================
-#========================================================
-# example use
-
-col = "blue"
-new_sim = simulation(col)
-
-
-x = 0
-def anim(i):
-    global x
-    x+=1
-    new_sim.draw(with_trails=True)
-    new_sim.add_ball(x,100)
-
-
-fig, ax = plt.subplots()
-ani = FuncAnimation(plt.gcf(), anim, interval=500)
-plt.show()
+        # REWRITE: Update the data instead of calling plt.plot()
+        #self.trail_line.set_data([i.x for i in self.balls], [i.x for i in self.balls])
+        #self.marker.set_data([self.x], [self.y])
+        #pass

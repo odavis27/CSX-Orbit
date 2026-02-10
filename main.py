@@ -19,9 +19,10 @@ prev_spot = (0,0)
 def anim(i):
     global t, p, prev_spot, prev_dist
     #new_sim.draw(with_trails=True)
-    new_sim.balls[-1].plot(4)
+    #new_sim.balls[-1].plot(4)
     new_sim.draw_last_trails()
     pos = p.calc_pos()
+    if len(new_sim.balls) > 10: new_sim.balls = new_sim.balls[-2:] 
     #print(pos)
     #print(p.Vx)
     new_sim.add_ball(short(pos[0],3),short(pos[1],3))
@@ -41,5 +42,5 @@ def anim(i):
 
 
 fig, ax = plt.subplots()
-ani = FuncAnimation(plt.gcf(), anim, interval=5)
+ani = FuncAnimation(plt.gcf(), anim, interval=1)
 plt.show()
