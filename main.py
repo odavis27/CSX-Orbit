@@ -13,11 +13,12 @@ def anim(i):
     global t, p
     t += p.T
     new_sim.draw(with_trails=True)
-    pos = calc_pos(t,p)
-    print(pos)
+    pos = p.calc_pos()
+    #print(pos)
+    print(p.Vx)
     new_sim.add_ball(pos[0],pos[1])
     #new_sim.add_ball(x,100)
 
 fig, ax = plt.subplots()
-ani = FuncAnimation(plt.gcf(), anim, interval=100)
+ani = FuncAnimation(plt.gcf(), anim, interval=10)
 plt.show()
