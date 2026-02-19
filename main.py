@@ -1,46 +1,38 @@
 from calc_position import *
 from simulation_class import *
-from parameters import *
-from math import sqrt
 
-col = "black"
-new_sim = simulation(col)
+new_sim = simulation()
 
-def short(x,p):
-    return (x*(10**p))/(10**p)
-def dist(p1,p2):
-    #x1,y1,x2,y2
-    sqrt((p2[0]-p1[0])**2+(p2[1]-p1[1])**2)
 t = 0
-p = planet()
-new_sim.add_ball(0, 0)
-prev_dist = None
-prev_spot = (0,0)
+p = planet(M = 1.989e30, X = 1.5e8, Vy = 581000)
+p2 = planet(M = 5.97e24, X = 0.1, Vy = 0)
+# p.M = 1.989e30
+# p.X = 1.5e8
+# p.Vy = 581000
+# p2.M = 5.97e24
+# p2.X = 0
+# p2.Vy = 0
+
+planet_X = []
+planet_Y = []
+host_X = []
+host_Y = []
+
 def anim(i):
-    global t, p, prev_spot, prev_dist
-    #new_sim.draw(with_trails=True)
-    #new_sim.balls[-1].plot(4)
-    new_sim.draw_last_trails()
+    global t, p
     pos = p.calc_pos()
-    if len(new_sim.balls) > 10: new_sim.balls = new_sim.balls[-2:] 
-    #print(pos)
-    #print(p.Vx)
-    new_sim.add_ball(short(pos[0],3),short(pos[1],3))
-    #new_sim.add_ball(x,100)
-    # if t != 0:
-    #     new_dist = dist(prev_spot,pos)
-    #     if prev_dist != None:
-    #         if new_dist > prev_dist:
-    #             new_sim.clear_balls()
-    #         pass
-    #         print(new_dist, prev_dist)
-    #         print("---")
-    #     else:
-    #         prev_dist = new_dist
-    # prev_spot = pos
+    planet_X.append(pos[0])
+    planet_Y.append(pos[1])
+    new_sim.draw_planet(planet_X[-1], planet_Y[-1])
+    new_sim.trail(planet_X, planet_Y)
+    pos2 = p2.calc_pos()
+    host_X.append(pos2[0])
+    host_Y.append(pos2[1])
+    new_sim.draw_host(host_X[-1], host_Y[-1])
+    new_sim.trail(host_X, host_Y)
+    print(p.X)
     t += p.T
 
-
 fig, ax = plt.subplots()
-ani = FuncAnimation(plt.gcf(), anim, interval=1)
+ani = FuncAnimation(plt.gcf(), anim, interval=.5)
 plt.show()
