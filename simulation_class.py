@@ -13,11 +13,9 @@ class simulation:
         # Defines the class attributes Xs and Ys
         # An attribute is a variable specific to a class
         self.trail_color = trail_color
-    def draw_planet(self, X1, Y1):
+    def draw(self, X1, Y1):
         plt.cla()
         plt.plot(X1, Y1, marker="o", color='black', markersize=8)
-    def draw_host(self, X2, Y2):
-        plt.plot(X2, Y2, marker="o", color='green', markersize=15)
     def trail(self, Xs, Ys):
         Xs = [i for i in Xs]
         Ys = [i for i in Ys]
