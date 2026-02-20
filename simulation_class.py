@@ -9,13 +9,14 @@ class ball:
 class simulation:
     # init function runs with class is created
     # self argument is always needed and automatically passed 
-    def __init__(self,trail_color = "black"):
+    def __init__(self, trail_color = "black"):
         # Defines the class attributes Xs and Ys
         # An attribute is a variable specific to a class
         self.trail_color = trail_color
-    def draw(self, X1, Y1):
+    def draw(self, X1, Y1, X2, Y2, color1, size1, color2, size2):
         plt.cla()
-        plt.plot(X1, Y1, marker="o", color='black', markersize=8)
+        plt.plot(X1, Y1, marker="o", color=color1, markersize=size1)
+        plt.plot(X2, Y2, marker="o", color=color2, markersize=size2)
     def trail(self, Xs, Ys):
         Xs = [i for i in Xs]
         Ys = [i for i in Ys]
