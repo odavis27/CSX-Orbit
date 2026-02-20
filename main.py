@@ -22,11 +22,10 @@ def anim(i):
     pos = p.calc_pos()
     planet_X.append(pos[0])
     planet_Y.append(pos[1])
-    new_sim.draw(planet_X[-1], planet_Y[-1])
-    new_sim.trail(planet_X, planet_Y)
     host_X.append(pos[2])
     host_Y.append(pos[3])
-    new_sim.draw(host_X[-1], host_Y[-1])
+    new_sim.draw(planet_X[-1], planet_Y[-1], host_X[-1], host_Y[-1], 'black', 8, 'green', 20, )
+    new_sim.trail(planet_X, planet_Y)
     new_sim.trail(host_X, host_Y)
     print(p.XH)
     t += p.T
@@ -34,4 +33,3 @@ def anim(i):
 fig, ax = plt.subplots()
 ani = FuncAnimation(plt.gcf(), anim, interval=.5)
 plt.show()
-
