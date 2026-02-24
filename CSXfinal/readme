@@ -1,0 +1,32 @@
+Authors: Oliver Davis, and Jack Randall
+
+Description:
+    A simple simulation of the universal law of graviation, using an itterative approach. The program is able to simulate any system of celestial bodies, with any number of celestial bodies and their interactions on eachother. 
+        
+    The program consists of three main parts: 
+        the planet class
+        the simulation_class
+        and the main file.
+    
+    Planet Class:
+        The planet class provides a simple, and scaleable approach to modeling the impact of gravity on a celestial body or object. The class contains numerous variables used to store: the objects positon, the objects velocity, its mass, and its delta_t.
+
+        The class also contains a method for calculating the position of planets. 
+            This functions takes any number of celestial bodies (of type "planet") and calculate the acceleration which these bodies have on the satelite itself. 
+        This function then updates the positon of the body using the calculated acceleration.
+
+    simulation_class:
+        This class simplies the process of creating the animations with matplotlib by compiling together a function for drawing any number of celestial bodies, and a function for drawing the trails that these bodies made.
+    
+    main:
+        Defines the celestial bodies, and runs the simulation
+Instructions:
+    There are two ways to run this simulation. 
+    A) you can run the LagrangePoints.py file.
+        this will show you a simulation of the earths orbit, with two lagrange points attached. if you want, you can also edit the paramaters for all the celestial bodies at the top of the file, and change which bodies affect eachother by changing the bodies included in the calc_position function calls.
+    B) mainTwoBody.py
+        The same as the LagrangePoints file, but its simulation a binary star system.
+Date:
+    2/23/2026
+Bugs:
+    Be cautious when changing the delta_time as increasing it too much will decrease the precision of the simulation.
